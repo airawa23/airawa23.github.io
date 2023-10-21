@@ -1,0 +1,578 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;400;700&family=Playpen+Sans:wght@200;400;500;700&family=Poppins:wght@200;300;400;500;700&family=Ubuntu:wght@300&display=swap');
+*{
+    font-family: 'Playpen Sans', cursive;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    list-style: none;
+    text-decoration: none;
+    
+}
+
+/* section */
+section {
+    margin-top: 0.5%;
+    padding: 50px 100px;
+}
+
+/* icon wa */
+.whatsapp_float {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 40px;
+    right: 40px;
+    background-color: #25d366;
+    color: #fff;
+    border-radius: 50px;
+    text-align: center;
+    font-size: 30px;
+    box-shadow: 2px 2px 3px #999;
+    z-index: 100;
+  }
+  
+  .whatsapp-icon {
+    margin-top: 16px;
+  }
+
+body {
+    height: 100vh;
+    background-color: aliceblue;
+}
+
+/* container nav */
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 70px;
+    width: 100%;
+    background-color: bisque;
+    box-shadow: 5px 5px 3px rgb(98, 48, 9);;
+    z-index: 100;
+}
+
+nav .navbar {
+    width: 100%;
+    position: relative;
+    height: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* for sidebarOpen icon */
+nav .navbar .sidebarOpen {
+    color:rgb(98, 48, 9);
+    font-size: 25px;
+    padding: 5px;
+    display: none;
+    cursor: pointer;
+}
+
+/* logo */
+nav .navbar .logo img {
+    width: 100%;
+    height: 60px;
+}
+
+.menu .logoToggle {
+    display: none;
+}
+
+/* kumpulan link */
+.navbar .navlinks {
+    display: flex;
+    align-items: center;
+}
+
+.navbar .navlinks li {
+    margin: 0 10px;
+    list-style: none;
+}
+
+.navbar .navlinks li a {
+    padding: 10px;
+    font-size: 17px;
+    font-weight: 500;
+    color:rgb(98, 48, 9);
+    position: relative;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* selector mouse links */
+.navlinks li:hover a {
+    color: rgb(216, 152, 115);
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+/* search box */
+.navbar .searchBox {
+    display: flex;
+    align-items: center;
+}
+
+.searchToggle {
+    height: 40px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 5px;
+    
+}
+
+.searchToggle i {
+    position: absolute;
+    color:rgb(98, 48, 9);
+    font-size: 22px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* search box active & cancel */
+.searchToggle i.cancel {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.searchToggle.active i.cancel {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.searchToggle.active i.search {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.searchBox {
+    position: relative;
+}
+
+/* search field */
+.searchBox .searchField {
+    position: absolute;
+    bottom: -80px;
+    right: 5px;
+    height: 50px;
+    width: 350px;
+    display: flex;
+    align-items: center;
+    background-color: rgb(98, 48, 9);
+    padding: 3.25px;
+    border-radius: 50px;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+.searchField::before {
+    content: '';
+    position: absolute;
+    right: 14px;
+    top: -4px;
+    height: 12px;
+    width: 12px;
+    background-color: rgb(98, 48, 9);
+    transform: rotate(-45deg);
+    z-index: -1;
+}
+
+.searchToggle.active ~ .searchField {
+    bottom: -72px;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.searchField input {
+    height: 100%;
+    width: 100%;
+    padding: 0 45px 0 15px;
+    outline: none;
+    border: none;
+    border-radius: 50px;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.searchField i {
+    position: absolute;
+    right: 15px;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+/* for phone or other (responsive) */
+@media (max-width: 800px) {
+
+    nav .navbar .sidebarOpen {
+        display: block;
+    }
+
+    .menu {
+        position: fixed;
+        height: 100%;
+        width: 100%;
+        left: -100%;
+        top: 0;
+        padding: 20px;
+        background-color: bisque;
+        z-index: 100;
+        transition: all 0.4s ease;
+    }
+
+    nav.active .menu {
+        left: 0;
+    }
+
+    nav .navbar.active .openLogo a {
+        opacity: 0;
+        transition: all 0.3s ease;
+    }
+
+    /* container logo */
+    .menu .logoToggle {
+        display: block;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    /* x button close */
+    .logoToggle .sidebarClose {
+        color:rgb(98, 48, 9);
+        font-size: 24px;
+        cursor: pointer;
+    }
+
+    /* ubah tampilan jadi kolom */
+    .navbar .navlinks {
+        flex-direction: column;
+        padding-top: 30px;
+    }
+
+    /* give a space */
+    .navbar .navlinks li a {
+        display: block;
+        margin-top: 20px;
+    }
+}
+
+/* home section */
+.homepage {
+    padding: 50px;
+    width: 100%;
+    min-height: 100vh;
+    background: url(img/bg.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    align-items: center;
+    grid-template-columns: repeat(auto-fit, minmax(17rem, auto));
+    gap: 1.5rem;
+}
+
+.homeText h1 {
+    /* font-family: 'Nunito', sans-serif; */
+    /* background-color: aqua; */
+    margin-top: 70px;
+    margin-left: 5%;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: antiquewhite;
+    font-size: 30px;
+}
+
+.homeText p{
+    /* background-color: aquamarine; */
+    font-size: 17px;
+    color: antiquewhite;
+    margin: 0.5rem 40% 1.4rem 5%;
+    letter-spacing: 2px;
+}    
+
+/* email input */
+h3,p {
+    position: relative;
+    font-size: 15px;
+    color:  antiquewhite;
+    margin: 0 40% 0.5% 5%;
+}
+
+#emailForm {
+    margin-top: 10px;
+    position: relative;
+    margin: 10px 40% 0.5% 5%;
+    outline: none;
+}
+
+form #email {
+    width: 300px;
+    background-color: #ffe4c4;
+    padding: 5px;
+    border-radius: 5px;
+    outline: none; 
+    border: none;   
+}
+
+.subcribeBtn {
+    box-shadow: none;
+    outline: none;
+    padding: 4px;
+    margin: 10px 40% 0.5% 0;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: rgb(98, 48, 9);
+    color: aliceblue
+}
+
+/* Menu Section */
+.menu {
+    margin-top: 0;
+    background-color: #ffe4c4;
+}
+
+.heading {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    text-align: center;
+    font-size: 20px;
+    color: rgb(98, 48, 9);
+}
+
+/* container menu */
+.menuCont {
+    display: grid;
+    padding: 5px;
+    row-gap: 10px;
+    column-gap: 100px;
+    grid-template-columns: auto auto auto;
+    gap: 1.5 rem;
+    margin-top: 2rem;
+    /* background-color: cadetblue; */
+    align-items: center;
+    justify-content: center;
+}
+
+/* card tiap menu(gambar dengan tulisan) */
+.menuCont .box {
+    /* background-color: aquamarine; */
+    flex-wrap: wrap;
+    border-radius: 0.5rem;
+    margin-top: 5rem;
+    margin-left: 10px;
+    /* margin: initial; */
+}
+
+/* img tiap menu */
+.menu .menuCont .box img {
+    width: auto;
+    height: 350px;
+    object-fit: contain;
+    object-position: center;
+    padding: 5px;
+    border-radius: 0.5rem;
+    background: rgb(98, 48, 9);
+}
+
+.menuCont .box h3 {
+    margin-right: 0;
+    margin-left: 0;
+    text-align: center;
+    color: rgb(98, 48, 9);
+}
+
+.menuCont .box p {
+    font-size: small;
+    margin-right: 10px;
+    margin-left: 10px;
+    text-align: center;
+    color: rgb(98, 48, 9);
+}
+
+/* lokasi section */
+.lokasi {
+    display: block;
+    margin: 0;
+    background-color:rgb(245, 202, 150);
+    padding-bottom: 2%;
+}
+
+.headingloc {
+    /* background-color: #25d366; */
+    margin-top: 5vh;
+    margin-left: 2vh;
+    margin-right: 0;
+    margin-bottom: 5vh;
+    text-align: start;
+    font-size: 20px;
+    color: rgb(98, 48, 9);
+}
+
+/* lokasi container */
+.lokasi .mapContainer {
+    /* background-color: aqua; */
+    display: grid;
+    grid-template-columns: auto auto auto; 
+    padding: 10px;
+}
+
+/* gmaps border */
+.lokasi .mapContainer .map{
+    border-radius: 0.5rem;
+    padding: 5px;
+    background-color: rgb(98, 48, 9);
+}
+
+.lokasi .mapContainer .detailLocation {
+    /* background-color: aquamarine; */
+    display: grid;
+    padding: 5px;
+    row-gap: 10px;
+    column-gap: 10px;
+    grid-template-columns: auto auto auto auto;
+    margin-top: 0;
+    align-items: center;
+    justify-content: center;
+}
+
+.loc {
+    /* background-color: bisque; */
+    flex-wrap: wrap;
+    border-radius: 0.5rem;
+    padding: 10px;
+    margin-top: 0;
+    height: 100%;
+    margin-left: 0;
+}
+
+.lokasi .mapContainer h3 {
+    /* background-color: bisque; */
+    margin-right: 0;
+    margin-left: 7px;
+    padding: 3px;
+    font-size: 15px;
+    text-align: start;
+    color: rgb(98, 48, 9);
+}
+
+.lokasi .mapContainer p {
+    padding: 10px;
+    margin-left: 0;
+    margin-right: 5vh;
+    /* background-color: brown; */
+    font-size: small;
+    color: rgb(98, 48, 9);
+}
+
+/* kontak section */
+.kontak {
+    margin-top: 0;
+    background-color:rgb(245, 202, 150);
+}
+
+.kontak .heading-kontak {
+    /* background-color: #25d366; */
+    margin-top: 2vh;
+    margin-left: 3vh;
+    margin-right: 0;
+    margin-bottom: 5vh;
+    text-align: start;
+    font-size: 20px;
+    color: rgb(98, 48, 9);
+}
+
+/* row kontak (container kontak) */
+.container-kontak {
+    /* background-color:#999; */
+    display: grid;
+    column-gap: 5vh;
+    padding: 5px;
+    grid-template-columns: auto auto;
+    margin-top: 0;
+    margin-left: 0;
+    align-items: center;
+    justify-content: center;
+}
+
+.container-kontak .work-day {
+    height: 100%;
+    margin-left: 0;
+    display: block;
+    /* background-color: aquamarine; */
+}
+
+.container-kontak .kontak-detail {
+    column-gap: 5vh;
+    height: 100%;
+    display: flex;
+    /* background-color: beige; */
+}
+
+.container-kontak h2 {
+    margin-top: 5vh;
+    border-radius: 50px;
+    background-color: bisque;
+    text-transform: uppercase;
+    margin-right: 0;
+    margin-left: 1vh;
+    padding: 2vh;
+    font-size: 15px;
+    text-align: start;
+    color: rgb(98, 48, 9);
+}
+
+.container-kontak p {
+    padding: 5px;
+    margin-left: 20px;
+    margin-right: 0;
+    /* background-color: burlywood; */
+    color: rgb(98, 48, 9);
+}
+
+/* Tentang Kami Section */
+.aboutpage {
+    margin-top: 0;
+    background-color: bisque;
+}
+
+.heading-about {
+    padding: 50px;
+    width: 100%;
+    height: 50vh;
+    background: url(img/bg-about-us.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    align-items: center;
+    grid-template-columns: repeat(auto-fit, minmax(17rem, auto));
+    gap: 1.5rem;
+}
+
+.heading-about h1 {
+    /* background-color: #999; */
+    padding-top: 15vh;
+    font-size: 45px;
+    font-weight: 600;
+    text-align: center;
+    color: white;
+}
+
+.about-container .first-content h2 {
+    margin-top: 5vh;
+    border-radius: 50px;
+    margin-right: 0;
+    margin-left: 1vh;
+    padding: 2vh;
+    font-size: 15px;
+    text-align: center;
+    color: rgb(98, 48, 9);
+}
